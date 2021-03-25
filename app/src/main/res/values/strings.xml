@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Task2.1P</string>
+    <string name="unitString">Unit</string>
+    <string name="value">value</string>
+    <string name="error_message">Please click a right conversion button</string>
+
+    <string-array name="spinner_unit">
+        <item>Metre</item>
+        <item>Celsius</item>
+        <item>Kilograms</item>
+    </string-array>
+</resources>
