@@ -3,6 +3,7 @@ package com.example.task21p;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.util.Size;
 import android.view.View;
@@ -17,7 +18,9 @@ import android.widget.Toast;
 
 import java.text.DateFormatSymbols;
 
-public class MainActivity extends AppCompatActivity {
+import static com.example.task21p.R.id.ButtonKg;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     Spinner spinnerUnit;
     String[] units;
@@ -34,17 +37,21 @@ public class MainActivity extends AppCompatActivity {
 
         spinnerUnit = findViewById(R.id.spinnerUnit);
         populateSpinnerUnit();
-        String[] units;
+        String[] units = new String[0];
 
-        enterMeters = (EditText)findViewById(R.id.UnitValue);
+        enterMeters = (EditText) findViewById(R.id.UnitValue);
 
         resultTextView = (TextView)findViewById(R.id.Centimeter);
         resultTextView2 = (TextView)findViewById(R.id.Foot);
         resultTextView3 = (TextView)findViewById(R.id.Inch);
 
         convertButton = (ImageButton) findViewById(R.id.ButtonMeter);
-        convertButton2 = (ImageButton) findViewById(R.id.ButtonKg);
+        convertButton2 = (ImageButton) findViewById(ButtonKg);
         convertButton3 = (ImageButton) findViewById(R.id.ButtonTem);
+
+        convertButton.setOnClickListener(this);
+        convertButton2.setOnClickListener(this);
+        convertButton3.setOnClickListener(this);
 
 
         convertButton.setOnClickListener(new View.OnClickListener() {
@@ -53,7 +60,17 @@ public class MainActivity extends AppCompatActivity {
 
                 String unit = spinnerUnit.getSelectedItem().toString();
 
-                Toast.makeText(MainActivity.this, unit + " conversion success" , Toast.LENGTH_SHORT).show();
+                if (convertButton.isPressed()) {
+
+                    //Toast.makeText(MainActivity.this, unit + " Click a right conversion", Toast.LENGTH_SHORT).show();
+
+
+                } else {
+
+                    Toast.makeText(MainActivity.this, unit + " Click a right conversion" , Toast.LENGTH_SHORT).show();
+
+                }
+
 
                 double multiple = 39.37;
                 double result = 0;
@@ -64,27 +81,21 @@ public class MainActivity extends AppCompatActivity {
                 double multiple3 = 3.28;
                 double result3 = 0;
 
-                if (enterMeters.getText().toString().equals("")) {
-                    resultTextView.setText(R.string.error_message);
-                    resultTextView.setTextColor(Color.RED);
 
+                double meterValue = Double.parseDouble(enterMeters.getText().toString());
 
-                } else {
-                    double meterValue = Double.parseDouble(enterMeters.getText().toString());
+                result = meterValue * multiple;
+                result2 = meterValue * multiple2;
+                result3 = meterValue * multiple3;
 
-                    result = meterValue * multiple;
-                    result2 = meterValue * multiple2;
-                    result3 = meterValue * multiple3;
+                resultTextView.setTextColor(Color.GRAY);
+                resultTextView.setText(String.format("%.2f             ", result) + "Inches");
 
-                    resultTextView.setTextColor(Color.GRAY);
-                    resultTextView.setText(String.format("%.2f             ", result) + "Inches");
+                resultTextView2.setTextColor(Color.GRAY);
+                resultTextView2.setText(String.format("%.2f             ", result2) + "Centimeter");
 
-                    resultTextView2.setTextColor(Color.GRAY);
-                    resultTextView2.setText(String.format("%.2f             ", result2) + "Centimeter");
-
-                    resultTextView3.setTextColor(Color.GRAY);
-                    resultTextView3.setText(String.format("%.2f             ", result3) + "Foot");
-                }
+                resultTextView3.setTextColor(Color.GRAY);
+                resultTextView3.setText(String.format("%.2f             ", result3) + "Foot");
             }
         });
 
@@ -94,7 +105,16 @@ public class MainActivity extends AppCompatActivity {
 
                 String unit = spinnerUnit.getSelectedItem().toString();
 
-                Toast.makeText(MainActivity.this, unit + " conversion success" , Toast.LENGTH_SHORT).show();
+                if (convertButton2.isPressed()) {
+
+                    Toast.makeText(MainActivity.this, unit + " Click a right conversion", Toast.LENGTH_SHORT).show();
+
+
+                } else {
+
+                    Toast.makeText(MainActivity.this, unit + " Click a right conversion" , Toast.LENGTH_SHORT).show();
+
+                }
 
                 double multiple4 = 1000;
                 double result4 = 0;
@@ -105,26 +125,20 @@ public class MainActivity extends AppCompatActivity {
                 double multiple6 = 2.20;
                 double result6 = 0;
 
-                if (enterMeters.getText().toString().equals("")) {
-                    resultTextView.setText(R.string.error_message);
-                    resultTextView.setTextColor(Color.RED);
+                double meterValue = Double.parseDouble(enterMeters.getText().toString());
 
-                } else {
-                    double meterValue = Double.parseDouble(enterMeters.getText().toString());
+                result4 = meterValue * multiple4;
+                result5 = meterValue * multiple5;
+                result6 = meterValue * multiple6;
 
-                    result4 = meterValue * multiple4;
-                    result5 = meterValue * multiple5;
-                    result6 = meterValue * multiple6;
+                resultTextView.setTextColor(Color.GRAY);
+                resultTextView.setText(String.format("%.2f             ", result4) + "Gram");
 
-                    resultTextView.setTextColor(Color.GRAY);
-                    resultTextView.setText(String.format("%.2f             ", result4) + "Gram");
+                resultTextView2.setTextColor(Color.GRAY);
+                resultTextView2.setText(String.format("%.2f             ", result5) + "Ounce(Oz)");
 
-                    resultTextView2.setTextColor(Color.GRAY);
-                    resultTextView2.setText(String.format("%.2f             ", result5) + "Ounce(Oz)");
-
-                    resultTextView3.setTextColor(Color.GRAY);
-                    resultTextView3.setText(String.format("%.2f             ", result6) + "Pound(Ib)");
-                }
+                resultTextView3.setTextColor(Color.GRAY);
+                resultTextView3.setText(String.format("%.2f             ", result6) + "Pound(Ib)");
             }
         });
 
@@ -134,7 +148,16 @@ public class MainActivity extends AppCompatActivity {
 
                 String unit = spinnerUnit.getSelectedItem().toString();
 
-                Toast.makeText(MainActivity.this, unit + " conversion success" , Toast.LENGTH_SHORT).show();
+                if (convertButton3.isPressed()) {
+
+                    Toast.makeText(MainActivity.this, unit + " Click a right conversion", Toast.LENGTH_SHORT).show();
+
+
+                } else {
+
+                    Toast.makeText(MainActivity.this, unit + " Click a right conversion" , Toast.LENGTH_SHORT).show();
+
+                }
 
                 double multiple7 = 33.8;
                 double result7 = 0;
@@ -144,26 +167,19 @@ public class MainActivity extends AppCompatActivity {
 
                 double result9 = 0;
 
-                if (enterMeters.getText().toString().equals("")) {
-                    resultTextView.setText(R.string.error_message);
-                    resultTextView.setTextColor(Color.RED);
+                double meterValue = Double.parseDouble(enterMeters.getText().toString());
 
+                result7 = meterValue * multiple7;
+                result8 = meterValue * multiple8;
 
-                } else {
-                    double meterValue = Double.parseDouble(enterMeters.getText().toString());
+                resultTextView.setTextColor(Color.GRAY);
+                resultTextView.setText(String.format("%.2f             ", result7) + "Fahrenheit");
 
-                    result7 = meterValue * multiple7;
-                    result8 = meterValue * multiple8;
+                resultTextView2.setTextColor(Color.GRAY);
+                resultTextView2.setText(String.format("%.2f             ", result8) + "Kelvin");
 
-                    resultTextView.setTextColor(Color.GRAY);
-                    resultTextView.setText(String.format("%.2f             ", result7) + "Fahrenheit");
-
-                    resultTextView2.setTextColor(Color.GRAY);
-                    resultTextView2.setText(String.format("%.2f             ", result8) + "Kelvin");
-
-                    resultTextView3.setTextColor(Color.GRAY);
-                    resultTextView3.setText(String.format("", result9) + "");
-                }
+                resultTextView3.setTextColor(Color.GRAY);
+                resultTextView3.setText(String.format("", result9) + "");
             }
         });
 
@@ -174,4 +190,11 @@ public class MainActivity extends AppCompatActivity {
         unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerUnit.setAdapter(unitAdapter);
     }
+
+    @Override
+    public void onClick(View view) {
+
+    }
 }
+
+
