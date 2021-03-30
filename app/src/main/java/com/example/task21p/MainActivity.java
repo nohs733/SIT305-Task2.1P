@@ -60,17 +60,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 String unit = spinnerUnit.getSelectedItem().toString();
 
-                if (convertButton.isPressed()) {
-
-                    //Toast.makeText(MainActivity.this, unit + " Click a right conversion", Toast.LENGTH_SHORT).show();
-
-
-                } else {
-
-                    Toast.makeText(MainActivity.this, unit + " Click a right conversion" , Toast.LENGTH_SHORT).show();
+                if (unit.equals("Metre")==true) {
+                    Toast.makeText(MainActivity.this, unit + " conversion success", Toast.LENGTH_SHORT).show();
 
                 }
 
+                else {
+                    Toast.makeText(MainActivity.this, unit + " conversion fail", Toast.LENGTH_SHORT).show();
+                }
 
                 double multiple = 39.37;
                 double result = 0;
@@ -105,15 +102,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 String unit = spinnerUnit.getSelectedItem().toString();
 
-                if (convertButton2.isPressed()) {
+                if (unit.equals("Kilograms")==true) {
+                    Toast.makeText(MainActivity.this, unit + " conversion success", Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(MainActivity.this, unit + " Click a right conversion", Toast.LENGTH_SHORT).show();
+                }
 
-
-                } else {
-
-                    Toast.makeText(MainActivity.this, unit + " Click a right conversion" , Toast.LENGTH_SHORT).show();
-
+                else {
+                    Toast.makeText(MainActivity.this, unit + " conversion fail", Toast.LENGTH_SHORT).show();
                 }
 
                 double multiple4 = 1000;
@@ -148,15 +143,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
                 String unit = spinnerUnit.getSelectedItem().toString();
 
-                if (convertButton3.isPressed()) {
+                if (unit.equals("Celsius") ==true) {
+                    Toast.makeText(MainActivity.this, unit + " conversion success", Toast.LENGTH_SHORT).show();
 
-                    Toast.makeText(MainActivity.this, unit + " Click a right conversion", Toast.LENGTH_SHORT).show();
+                }
 
-
-                } else {
-
-                    Toast.makeText(MainActivity.this, unit + " Click a right conversion" , Toast.LENGTH_SHORT).show();
-
+                else {
+                    Toast.makeText(MainActivity.this, unit + " conversion fail", Toast.LENGTH_SHORT).show();
                 }
 
                 double multiple7 = 33.8;
